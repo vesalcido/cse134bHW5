@@ -1,0 +1,507 @@
+/* CSS Variables with fallbacks */
+:root {
+    --primary-color: #008B8B;
+    --secondary-color: #f4f4f4;
+    --text-color: black;
+    --font-primary: 'Poppins', Arial, sans-serif;
+    --font-secondary: 'Roboto', Helvetica, sans-serif;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --primary-color: #333;
+    --secondary-color: #121212;
+    --text-color: white;
+}
+
+/* Ensure Labels & Form Text Stay Black in Dark Mode */
+body.dark-mode label,
+body.dark-mode legend,
+body.dark-mode p,
+body.dark-mode b {
+    color: black !important; /* Keeps labels and text black */
+}
+
+/* Ensure Inputs Stay Readable in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: white !important; /* Keeps inputs white */
+    color: black !important; /* Keeps text inside inputs black */
+    border: 1px solid #555; /* Adds a visible border */
+}
+
+/* Ensure Placeholder Text is Visible in Dark Mode */
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #666 !important; /* Keeps placeholders readable */
+}
+
+/* ✅ Preserve Error Colors and Functionality in Dark Mode */
+
+/* 🔴 Error State (Red Background for Inputs & Textareas) */
+input.error, 
+textarea.error {
+    background-color: #f8d7da !important; /* Light red */
+    border-color: red !important;
+    color: black !important;
+}
+
+/* 🟡 Warning State (Yellow Background for Textareas Close to Limit) */
+textarea.warn {
+    background-color: #fff3cd !important; /* Light yellow */
+    border-color: orange !important;
+    color: black !important;
+}
+
+/* 🟢 Valid Input State (Green Background) */
+input:valid,
+textarea:valid {
+    background-color: #e6ffe6 !important; /* Light green */
+    border-color: green !important;
+    color: black !important;
+}
+
+/* 🔥 Keep Error Message Box Red */
+.error-message {
+    background-color: #f8d7da !important;
+    color: black !important;
+    border: 1px solid red !important;
+}
+
+/* ⚡ Keep Flash Red Animation for Invalid Inputs */
+@keyframes flashRed {
+    0% { background-color: #ffcccc; }
+    50% { background-color: white; }
+    100% { background-color: #ffcccc; }
+}
+
+.flash-error {
+    animation: flashRed 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+/* General Styles */
+body {
+    background-color: var(--secondary-color, white);
+    font-family: var(--font-primary, Arial, sans-serif);
+    color: var(--text-color, black);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/* Theme Toggle Button - Small & Positioned in Top-Right */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem; /* Make the button smaller */
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Adjust closer to the top */
+    right: 15px; /* Adjust to be closer to the right edge */
+    color: var(--text-color);
+    padding: 5px; /* Add small padding */
+    width: 30px; /* Set fixed width */
+    height: 30px; /* Set fixed height */
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%; /* Optional: Makes it circular */
+    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    /*display: none; /* Hidden by default */
+}
+
+/* Show button only when JavaScript is enabled */
+body.js-enabled #theme-toggle {
+    display: block;
+}
+
+/* Hover Effect */
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+/* Header & Navigation Merged (No Gap) */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: left;
+    padding: 1.5rem 2rem 2rem 2rem; /* Removed bottom padding */
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Title */
+header h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0; /* Ensures no space below */
+    padding-bottom: 0.5rem; /* Slight spacing for visual balance */
+}
+
+/* Navigation Inside Header */
+nav {
+    width: 100%;
+    background-color: var(--primary-color); /* Ensures it blends with header */
+    padding: 0;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 2rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Fix Gap Between Header and Page Titles */
+header::after {
+    display: none; /* Prevents any white spacing issues */
+}
+
+/* Page Title - Directly Below Navigation, Inside Teal Box */
+.page-title {
+    background-color: var(--primary-color); /* Keep it in the teal section */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Main Content */
+main {
+    width: 80%;
+    margin-left: 2rem;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+/* Contact Form */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+fieldset {
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-primary, Arial, sans-serif);
+}
+
+/* 🔹 New Character Countdown Styling */
+.char-count {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 5px;
+    font-weight: bold;
+    display: block;
+}
+
+/* 🔹 Warn Style for Countdown (10 or fewer characters left) */
+.char-count.warn {
+    color: orange;
+}
+
+/* 🔹 Error Style for Countdown (5 or fewer characters left) */
+.char-count.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* 🔹 Warn Style for Text Area (10 or fewer characters left) */
+textarea.warn {
+    border-color: orange !important;
+    background-color: #fff3cd !important; /* Light yellow background */
+}
+
+/* 🔹 Error Style for Text Area (5 or fewer characters left) */
+textarea.error {
+    border-color: red !important;
+    background-color: #f8d7da !important; /* Light red background */
+}
+
+
+
+
+
+
+
+/* ✅ Flash Effect for Invalid Input */
+@keyframes flashRed {
+    0% { background-color: #ffcccc; }
+    50% { background-color: white; }
+    100% { background-color: #ffcccc; }
+}
+
+.flash-error {
+    animation: flashRed 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+input:invalid, textarea:invalid {
+    border-color: red;
+    background-color: #ffe6e6; /* Light red background for invalid fields */
+}
+
+input:valid, textarea:valid {
+    border-color: green;
+    background-color: #e6ffe6; /* Light green background for valid fields */
+}
+
+/* ✅ Error Message Styling */
+.error-message {
+    display: none;
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* ADDED HERE: Email Validation */
+input[type="email"]:invalid {
+    border-color: red;
+}
+
+/* ADDED HERE: Restrict Invalid Characters in Inputs (Except Textarea) */
+input:invalid {
+    border-color: red;
+}
+
+
+
+
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Form Buttons */
+button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8em 1.5em;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black 20%);
+    transform: scale(1.05);
+}
+
+/* Contact Info */
+address {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Search Bar */
+search {
+    margin-top: 2rem;
+}
+
+search label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+search input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+        margin-left: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.6em 1.2em;
+    }
+}
+
+/* Remove Extra Space Below Header */
+header {
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hide Checkbox by Default */
+.menu-toggle {
+    display: none;
+}
+
+/* Hamburger Icon */
+.menu-label {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
+}
+
+/* Navigation Menu Default - Desktop View */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .menu-label {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    /* Show Menu When Checkbox is Checked */
+    .menu-toggle:checked + .menu-label + nav ul {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+} 

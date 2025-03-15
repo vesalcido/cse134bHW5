@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Home - Verania's Web</title>
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1>Verania's Website</h1>
+        <h2>Welcome to My Portfolio!</h2>
+      </hgroup>
+      <!-- Hamburger Menu Toggle (Checkbox Hack) -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-label">☰</label>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+
+      <nav>
+        <ul class="menu">
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="custom.html">Custom CSS Page</a></li>
+          <li><a href="experiment.html">Experiment Page</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h3>Introduction: Who's Verania?</h3>
+        <figure>
+            <!-- Responsive Image using <picture> -->
+            <picture>
+                <!-- Small devices: Loads optimized WebP -->
+                <source srcset="optimized.jpg" type="jpg" media="(max-width: 600px)">
+                <!-- Medium devices: Loads compressed JPEG -->
+                <source srcset="optimized.jpg" type="jpg" media="(max-width: 1024px)">
+                <!-- Large screens: High-resolution image -->
+                <img src="me.jpg" alt="Verania Salcido, Web Developer smiling at the camera" loading="lazy" width="400" height="400">
+            </picture>
+            <figcaption>Hello! My name is Verania and I'm an aspiring Web Developer and Software Engineer!</figcaption>
+        </figure>
+        <p><strong>Explore my projects and learn more about me!</strong></p>
+        <hr />
+        <details>
+          <summary>Fun Facts:</summary>
+          <ul>
+            <li><b>I love coding!</b></li>
+            <li><i>Passionate about design!</i></li>
+            <li><em>Always learning new technologies!</em></li>
+          </ul>
+        </details>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Verania Salcido. All rights reserved.</p>
+    </footer>
+    <script src="theme-toggle.js"></script>
+  </body>
+</html>

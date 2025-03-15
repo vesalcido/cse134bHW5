@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resume.css">
+    <title>Resume - Verania</title>
+</head>
+<body>
+    <header>
+        <h1>Verania's Resume</h1>
+        <!-- Hamburger Menu Checkbox -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-label">☰</label>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <!-- </header> -->
+    <nav>
+        <ul class="menu">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Me</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="custom.html">Custom CSS Page</a></li>
+          <li><a href="experiment.html">Experiment Page</a></li>
+        </ul>
+      </nav>
+      </header>
+    <main>
+        <table>
+            <caption>Education and Experience</caption>
+            <colgroup>
+                <col style="background-color:lightgray">
+            </colgroup>
+            <tr>
+                <th>Year</th>
+                <th>Institution</th>
+                <th>Degree</th>
+            </tr>
+            <tr>
+                <td>2026</td>
+                <td>University of California San Diego</td>
+                <td>Bachelor of Science in Computer Science</td>
+            </tr>
+        </table>
+        <cite>- Verania Salcido</cite>
+        <ins>Updated Resume for 2025</ins>
+        <del>Previous Resume Version</del>
+        <dialog open>
+            <p> See Full Resume Here!</p>
+            <button onclick="this.parentElement.close()">Close</button>
+        </dialog>
+
+    </main>
+    <script src="theme-toggle.js"></script>
+</body>
+</html>

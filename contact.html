@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="contact.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Verania</title>
+
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1> 
+        <!-- Hamburger Menu Checkbox -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-label">☰</label>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="custom.html">Custom CSS Page</a></li>
+                <li><a href="experiment.html">Experiment Page</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <main>
+        <form action="https://httpbin.org/post" method="POST">
+            <fieldset>
+                
+                <legend>Contact Form</legend>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required pattern="^[a-zA-Z ]+$">
+
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required maxlength="30" placeholder="This is a test!"></textarea>
+
+                <!-- 🔹 New Character Countdown Added Below the Message Field -->
+                <div id="char-count" class="char-count">30 characters remaining</div>
+
+                <!-- ✅ Error Message Display -->
+                <div id="error-message" class="error-message" aria-live="polite"></div>
+
+                <!-- Hidden Field -->
+                <input type="hidden" name="possible_bot" value="true">
+                <input type="hidden" id="form-errors" name="form-errors">  <!-- ✅ Added here --> 
+
+
+                <label for="inquiry">Inquiry Type:</label>
+                <select id="inquiry" name="inquiry">
+                    <optgroup label="Inquiry Type">
+                        <option value="general">General</option>
+                        <option value="project">Project</option>
+                    </optgroup>
+                </select>
+
+                <button type="submit">Send</button>
+            </fieldset>
+        </form>
+
+        <noscript>Your browser does not support JavaScript.</noscript>
+
+        <b><p>Looking for specific contact info?</p></b>
+        <form role="search" method="GET">
+            <label for="search">Search:</label>
+            <input type="search" id="search" name="q">
+            <button type="submit">Search</button>
+        </form>
+    </main>
+    <!-- ✅ JavaScript for Improved Validation -->
+    <script>
+        //let form_errors =[];
+        document.addEventListener("DOMContentLoaded", function () {
+            let form_errors =[];
+
+            const form = document.querySelector("form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+            const charCountDisplay = document.getElementById("char-count");
+            const errorMessageDiv = document.getElementById("error-message");
+            const maxLength = 30;
+
+            // Theme toggle functionality (Added Here)
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Check localStorage for theme preference
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                body.classList.add("dark-mode");
+                themeToggle.textContent = "☀️"; // Change to sun icon
+            }
+
+            // Toggle Theme
+            themeToggle.addEventListener("click", function () {
+                body.classList.toggle("dark-mode");
+                const isDarkMode = body.classList.contains("dark-mode");
+
+                // Save preference to localStorage
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+                // Update button icon
+                themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+            });
+
+
+
+
+
+
+
+
+            
+
+            function showErrorMessage(field, message) {
+                errorMessageDiv.innerHTML = message;
+                errorMessageDiv.style.display = "block";
+                
+                // ✅ Check if the error is already in the array
+                if (!form_errors.some(error => error.field === field)) {
+                    form_errors.push({ field: field, message: message });
+                }
+                console.log("Updated form errors:", form_errors); // ✅ Debugging Log
+                setTimeout(() => {
+                    errorMessageDiv.style.display = "none";
+                }, 2000);
+            }
+
+            // ✅ Real-time Masking for Name Field
+            nameInput.addEventListener("input", function () {
+                const regex = /^[a-zA-Z ]*$/;
+                if (!regex.test(nameInput.value)) {
+                    nameInput.value = nameInput.value.replace(/[^a-zA-Z ]/g, "");
+                    nameInput.classList.add("flash-error");
+                    showErrorMessage("name","❌ Only letters and spaces are allowed in the Name field.");
+                    setTimeout(() => nameInput.classList.remove("flash-error"), 300);
+                }
+            });
+
+            // ✅ Live Character Countdown for Message Field (Updated for Styling)
+            messageInput.addEventListener("input", function () {
+                let remaining = maxLength - messageInput.value.length;
+                charCountDisplay.textContent = `${remaining} characters remaining`;
+
+                // ✅ Apply styles based on remaining characters
+                if (remaining <= 10 && remaining > 5) {
+                    charCountDisplay.classList.add("warn");
+                    charCountDisplay.classList.remove("error");
+
+                    messageInput.classList.add("warn"); // Warn style applied
+                    messageInput.classList.remove("error");
+                } else if (remaining <= 5) {
+                    charCountDisplay.classList.add("error");
+                    charCountDisplay.classList.remove("warn");
+
+                    messageInput.classList.add("error"); // Error style applied
+                    messageInput.classList.remove("warn");
+                } else {
+                    charCountDisplay.classList.remove("warn", "error");
+                    messageInput.classList.remove("warn", "error");
+                }
+
+                // ✅ Prevent exceeding max length
+                if (messageInput.value.length > maxLength) {
+                    messageInput.value = messageInput.value.substring(0, maxLength);
+                    messageInput.classList.add("flash-error");
+                    showErrorMessage("message","❌ Maximum 30 characters allowed in the Message field.");
+                    setTimeout(() => messageInput.classList.remove("flash-error"), 300);
+                }
+            });
+
+            // ✅ Form Submission Validation
+            form.addEventListener("submit", function (event) {
+                let isValid = true;
+                let errorMessages = [];
+
+                form_errors = [];
+
+                if (!nameInput.checkValidity()) {
+                    isValid = false;
+                    errorMessages.push("❌ Name can only contain letters and spaces.");
+                    nameInput.setCustomValidity("Only letters and spaces allowed.");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "name", message: "Invalid name format" });
+                } else {
+                    nameInput.setCustomValidity("");
+                    // // ✅ Store error in form_errors array
+                    // form_errors.push({ field: "name", message: "Invalid name format" });
+                }
+
+                if (!emailInput.checkValidity()) {
+                    isValid = false;
+                    errorMessages.push("❌ Please enter a valid email address.");
+                    emailInput.setCustomValidity("Enter a valid email (e.g., user@example.com).");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "email", message: "Invalid email address" });
+                } else {
+                    emailInput.setCustomValidity("");
+                }
+
+                if (!messageInput.checkValidity()) {
+                    isValid = false;
+                    errorMessages.push("❌ Message must be at most 30 characters long.");
+                    messageInput.setCustomValidity("Maximum 30 characters allowed.");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "message", message: "Message exceeds character limit" });
+                } else {
+                    messageInput.setCustomValidity("");
+                }
+                // ✅ NEW: Convert form_errors array to JSON and store in hidden field
+                document.getElementById("form-errors").value = JSON.stringify(form_errors);
+                console.log("Form Errors:", form_errors);
+
+                if (!isValid) {
+                    event.preventDefault();
+                    errorMessageDiv.innerHTML = errorMessages.join("<br>");
+                    errorMessageDiv.style.display = "block";
+                    setTimeout(() => {
+                        errorMessageDiv.style.display = "none";
+                    }, 5000);
+                }
+                // // ✅ NEW: Convert form_errors array to JSON and store in hidden field
+                // document.getElementById("form-errors").value = JSON.stringify(form_errors);
+                // console.log("Form Errors:", form_errors);
+
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="portfolio.js"></script>
+    <title>Portfolio - Verania</title>
+</head>
+<body>
+    <header>
+        <h1>My Projects</h1>
+        <!-- Hamburger Menu Checkbox -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-label">☰</label>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <!-- </header> -->
+    <nav>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="custom.html">Custom CSS Page</a></li>
+            <li><a href="experiment.html">Experiment Page</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+            <div class="topbar">
+            <h2>Projects</h2>
+            <div class="data-controls">
+                <button id="load-local" class="data-button">Load Local</button>
+                <button id="load-remote" class="data-button">Load Remote</button>
+            </div>
+            </div>
+            <project-card 
+                title="Project 1" 
+                image="project1.png"
+                alt="Screenshot of a scratch program imitating a soccer game!" 
+                description="A scratch program that uses arrow keys to play soccer and score goals." 
+                link="https://scratch.mit.edu/projects/973784653">
+            </project-card>
+        
+            <project-card 
+                title="Project 2" 
+                image="project2.png" 
+                alt="Screenshot of a scratch program imitating an apple basket game!" 
+                description="An apple basket game using arrow keys to catch the falling apples." 
+                link="https://scratch.mit.edu/projects/974513408">
+            </project-card>
+        
+            <project-card 
+                title="Project 3" 
+                image="project3.png" 
+                alt="Screenshot of a scratch program imitating animal noises!" 
+                description="An animal noise-making game by pressing on specific animals." 
+                link="https://scratch.mit.edu/projects/953847155">
+            </project-card>
+        
+    </main>
+    <script src="theme-toggle.js"></script>
+</body>
+</html>

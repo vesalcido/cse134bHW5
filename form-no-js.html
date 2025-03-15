@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="contact.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Verania</title>
+</head>
+<body>
+    <header>
+        <h1>Contact Me</h1>
+        <!-- Hamburger Menu Checkbox -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-label">☰</label>
+        
+        <!-- Navigation Menu -->
+        <nav>
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="custom.html">Custom CSS Page</a></li>
+                <li><a href="experiment.html">Experiment Page</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form action="https://httpbin.org/post" method="POST">
+            <fieldset>
+                <legend>Contact Form</legend>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required pattern="^[a-zA-Z ]+$">
+
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required maxlength="30" placeholder="This is a test!"></textarea>
+
+                <!-- Hidden Field -->
+                <input type="hidden" name="possible_bot" value="true">
+
+                <label for="inquiry">Inquiry Type:</label>
+                <select id="inquiry" name="inquiry">
+                    <optgroup label="Inquiry Type">
+                        <option value="general">General</option>
+                        <option value="project">Project</option>
+                    </optgroup>
+                </select>
+
+                <button type="submit">Send</button>
+            </fieldset>
+        </form>
+
+        <noscript>Your browser does not support JavaScript.</noscript>
+
+        <b><p>Looking for specific contact info?</p></b>
+        <form role="search" method="GET">
+            <label for="search">Search:</label>
+            <input type="search" id="search" name="q">
+            <button type="submit">Search</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,304 @@
+/* CSS Variables with Fallbacks */
+:root {
+    --primary-color: #008B8B;
+    --secondary-color: #f4f4f4;
+    --text-color: black;
+    --font-primary: 'Poppins', Arial, sans-serif;
+    --font-secondary: 'Roboto', Helvetica, sans-serif;
+}
+
+/* General Styles */
+body {
+    background-color: var(--secondary-color, white);
+    font-family: var(--font-primary, Arial, sans-serif);
+    color: var(--text-color, black);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+    --primary-color: #333;
+    --secondary-color: #121212;
+    --text-color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* 🔹 Keep Inputs, Forms, and Labels Readable in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode form,
+body.dark-mode main {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Header Styling */
+header {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: left;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* Theme Toggle Button - Small & Positioned in Top-Right */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem; /* Keep size same */
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Position same as contact page */
+    right: 15px;
+    color: var(--text-color);
+    padding: 5px;
+    width: 30px; /* Keep button size consistent */
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%; /* Make it circular */
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent look */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Show button only when JavaScript is enabled */
+body.js-enabled #theme-toggle {
+    display: block;
+}
+
+/* Hover Effect */
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navigation Styling */
+nav {
+    width: 100%;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    width: 80%;
+    margin-left: 2rem;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+/* Blockquote Styling */
+blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--primary-color, navy);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #555;
+}
+
+/* Definition List Styling */
+dl {
+    background-color: color-mix(in srgb, var(--secondary-color) 80%, white 20%);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+dt {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+dd {
+    font-size: 1rem;
+    margin-left: 1rem;
+    line-height: 1.5;
+}
+
+/* Ordered List in Aside */
+aside {
+    background-color: color-mix(in srgb, lightgray 80%, white 20%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+aside ol {
+    padding-left: 1.5rem;
+}
+
+aside ol li {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: left;
+    padding: 1rem 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+footer address {
+    font-style: normal;
+    font-size: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+        margin-left: 1rem;
+    }
+
+    nav {
+        padding-left: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    blockquote {
+        padding-left: 0.5rem;
+    }
+
+    aside {
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 1rem;
+    }
+}
+
+
+
+
+/* Hide Checkbox by Default */
+.menu-toggle {
+    display: none;
+}
+
+/* Hamburger Icon */
+.menu-label {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
+}
+
+/* Navigation Menu Default - Desktop View */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .menu-label {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    /* Show Menu When Checkbox is Checked */
+    .menu-toggle:checked + .menu-label + nav ul {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
