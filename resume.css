@@ -55,7 +55,7 @@ header {
     background-color: var(--primary-color);
     color: white;
     text-align: left; /* Centering the text */
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     width: 100%;
     margin: 0;
     display: flex;
@@ -72,7 +72,7 @@ header {
     top: 10px; /* Position same as contact page */
     right: 15px;
     color: var(--text-color);
-    padding: 5px;
+    /* padding: px; */
     width: 30px; /* Keep button size consistent */
     height: 30px;
     line-height: 30px;
@@ -109,7 +109,7 @@ body.js-enabled #theme-toggle {
 header h1 {
     font-weight: bold;
     font-size: 2rem; /* Adjust if necessary */
-    margin: 0; /* Remove any default margin */
+    margin: 10; /* Remove any default margin */
 }
 
 /* Navigation Inside Header */
@@ -156,133 +156,17 @@ main {
     padding: 2rem 0;
 }
 
-/* Resume Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-caption {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    padding: 1rem;
-}
 
-th, td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
 
-th {
-    background-color: var(--primary-color);
-    color: white;
-}
 
-tr:hover {
-    background-color: rgba(0, 139, 139, 0.1);
-}
 
-/* Resume Section */
-cite {
-    display: block;
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--primary-color);
-}
 
-ins {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
 
-del {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: red;
-}
 
-/* Resume Display Box */
-.resume-container {
-    text-align: center;
-    margin-top: 2rem;
-}
 
-.resume-container iframe {
-    width: 100%;
-    max-width: 800px;
-    height: 500px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border: none;
-}
 
-/* Resume Download Button */
-.resume-download {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-}
 
-.resume-download a {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.resume-download a:hover {
-    background-color: color-mix(in srgb, var(--primary-color) 80%, black 20%);
-}
-
-/* Dialog Box */
-dialog {
-    border: none;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    font-size: 1.2rem;
-    background-color: white;
-}
-
-dialog p {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/* Dialog Close Button */
-dialog button {
-    padding: 0.6rem 1rem;
-    margin-top: 1rem;
-    font-size: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-dialog button:hover {
-    background-color: color-mix(in srgb, var(--primary-color) 80%, black 20%);
-}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -386,6 +270,7 @@ nav ul {
 
     nav ul li {
         padding: 10px;
+        
     }
 
     nav ul li a {
@@ -398,4 +283,20 @@ nav ul {
     nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
+}
+
+iframe {
+    display: block;
+    margin: 1rem auto;
+    border: none;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+}
+
+.resume-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }

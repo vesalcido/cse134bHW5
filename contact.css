@@ -112,7 +112,7 @@ body {
     top: 10px; /* Adjust closer to the top */
     right: 15px; /* Adjust to be closer to the right edge */
     color: var(--text-color);
-    padding: 5px; /* Add small padding */
+    padding: 1px; 
     width: 30px; /* Set fixed width */
     height: 30px; /* Set fixed height */
     line-height: 30px;
