@@ -221,7 +221,15 @@ header {
 
 /* Hide Checkbox by Default */
 .menu-toggle {
-    display: none;
+    /* display: none; */
+
+    /*got my hamburger menu to show below*/
+    
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
 }
 
 /* Hamburger Icon */
@@ -267,10 +275,15 @@ nav ul {
         text-align: center;
     }
 
-    /* Show Menu When Checkbox is Checked */
+    /* Show Menu When Checkbox is Checked
     .menu-toggle:checked + .menu-label + nav ul {
         display: flex;
         
+    } */
+
+    /* got my hamburger menu to show up */
+    #menu-toggle:checked ~ nav ul {
+        display: flex;
     }
 
     nav ul li {
@@ -296,7 +309,8 @@ nav ul {
 
 iframe {
     display: block;
-    margin: 1.5rem 21rem;
+    /* margin: 1.5rem 21rem; */
+    margin: auto;
     border: none;
     width: 100%;
     max-width: 800px;
