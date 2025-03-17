@@ -156,7 +156,7 @@ blockquote {
 
 /* Definition List Styling */
 dl {
-    background-color: color-mix(in srgb, var(--secondary-color) 80%, white 20%);
+    /* background-color: color-mix(in srgb, var(--secondary-color) 80%, white 20%); */
     padding: 1rem;
     border-radius: 8px;
 }
@@ -193,10 +193,10 @@ aside ol li {
 footer {
     background-color: var(--primary-color, navy);
     color: white;
-    text-align: left;
-    padding: 1rem 2rem;
+    text-align: center;
+    /* padding: 1rem 2rem; */
     width: 100%;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
 }
 
 footer address {
@@ -303,4 +303,11 @@ nav ul {
     nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
+}
+
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2rem; /* Uses rem for scalability */
+    
 }

@@ -20,7 +20,7 @@ body {
 body.dark-mode {
     --primary-color: #333;
     --secondary-color: #121212;
-    --text-color: white;
+    /* --text-color: white; */
     background-color: var(--secondary-color);
     color: var(--text-color);
 }
@@ -134,17 +134,26 @@ main {
 
 /* Responsive Image */
 figure img {
-    width: 100%; /* Ensures responsiveness */
+    width: auto; /* Ensures responsiveness */
     max-width: 400px; /* Prevents it from being too large */
     height: auto; /* Maintains aspect ratio */
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
-    
+
     /* Ensures proper scaling within its container */
     object-fit: cover;
     object-position: center;
 }
+figure{
+    /* display: flex; */
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    /* width: 100%; */
+}
+
+
+
 
 /* Adjustments for small screens */
 @media (max-width: 768px) {
@@ -158,8 +167,8 @@ figure img {
 figcaption {
     font-size: 1rem;
     color: var(--text-color);
-    background-color: rgba(255, 255, 255, 0.8); /* Improves text contrast */
-    padding: 0.5rem;
+    /* background-color: rgba(255, 255, 255, 0.8); Improves text contrast */
+    padding: 3rem;
     border-radius: 5px;
     text-align: center;
 }
@@ -194,6 +203,7 @@ p {
     width: 80%;
     margin: auto;
     line-height: 1.6;
+    
 }
 
 /* Button with transition and transform */
@@ -218,8 +228,8 @@ footer {
     background-color: var(--primary-color, navy);
     color: white;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+    padding: 1rem 2rem;
+    width: 100%;
 }
 
 /* Media Query - Responsive Design */
@@ -234,7 +244,7 @@ footer {
     }
 
     figure img {
-        width: 80%;
+        width: 100%;
     }
 
     .fullscreen-section {
@@ -258,7 +268,7 @@ footer {
     }
     
     figure img {
-        width: 80%; /* Scale images for small screens */
+        width: 100%; /* Scale images for small screens */
         object-fit: contain; 
     }
 
@@ -373,4 +383,14 @@ nav ul {
     nav ul li a:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
+}
+
+
+
+svg {
+
+    align-items: center;
+    justify-content: normal;
+    gap: 10px;
+    margin: 3% 1%;
 }

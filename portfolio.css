@@ -17,12 +17,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
 }
 
 /* 🌙 Dark Mode Styles */
 body.dark-mode {
     --primary-color: #333;
-    --secondary-color: #121212;
+    /* --secondary-color: #121212; */
     --text-color: white;
     background-color: var(--secondary-color);
     color: var(--text-color);
@@ -34,9 +39,9 @@ body.dark-mode textarea,
 body.dark-mode select,
 body.dark-mode form,
 body.dark-mode main {
-    background-color: white !important;
+    /* background-color: white !important; */
     color: black !important;
-    border: 1px solid #555;
+    /* border: 1px solid #555; */
 }
 
 
@@ -192,9 +197,9 @@ project-card picture img:hover {
 
 /* Paragraph Styling */
 p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.5;
-    color: #333;
+    /* color: #333; */
 }
 
 /* Responsive Adjustments */
@@ -309,6 +314,38 @@ footer {
     background-color: var(--primary-color, navy);
     color: white;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+    /* padding: 1rem 2rem; */
+    width: 100%;
+    margin-top: auto;
+}
+
+
+#load-local{
+    top:50%;
+    background-color:#008b8b;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+
+    min-height:30px; 
+    min-width: 120px;
+}
+
+#load-remote{
+    top:50%;
+    background-color:#008b8b;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+
+    min-height:30px; 
+    min-width: 120px;
+}
+#load-local:hover{
+    background-color:#aeadad;
+    transition: 0.5s;
+}
+#load-remote:hover{
+    background-color:#aeadad;
+    transition: 0.5s;
 }

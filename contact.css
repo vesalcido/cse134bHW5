@@ -17,9 +17,14 @@ body.dark-mode {
 /* Ensure Labels & Form Text Stay Black in Dark Mode */
 body.dark-mode label,
 body.dark-mode legend,
-body.dark-mode p,
+body.dark-mode p:not(footer p),
 body.dark-mode b {
-    color: black !important; /* Keeps labels and text black */
+     color: black !important; /* Keeps labels and text black */
+}
+
+/* Ensure footer <p> is white */
+body.dark-mode footer p {
+    color: white !important;
 }
 
 /* Ensure Inputs Stay Readable in Dark Mode */
@@ -505,3 +510,24 @@ nav ul {
         background-color: rgba(255, 255, 255, 0.2);
     }
 } 
+
+
+/* Footer */
+footer {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: center;
+    /* padding: 1rem 2rem; */
+    width: 100%;
+    /* margin-top: 2rem; */
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2rem; /* Uses rem for scalability */
+    
+}
+
+footer.body.dark-mode p{
+    color: white;
+}
